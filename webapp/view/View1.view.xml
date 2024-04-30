@@ -1,0 +1,140 @@
+<mvc:View
+    controllerName="com.kpo.manageconagreement.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:uxap="sap.uxap"
+    xmlns:core="sap.ui.core"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:u="sap.ui.unified"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:c="sap.suite.ui.commons"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <content>
+            <uxap:ObjectPageLayout
+                id="ObjectPageLayout"
+                upperCaseAnchorBar="false"
+                showAnchorBar="true"
+                enableLazyLoading="true"
+            >
+                <uxap:sections>
+                    <uxap:ObjectPageSection
+                        id="_IDGenObjectPageSection1"
+                        showTitle="false"
+                    >
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection
+                                id="_IDGenObjectPageSubSection1"
+                                title=""
+                            >
+                                <uxap:blocks>
+                                    <f:SimpleForm
+                                        id="supplierForm1"
+                                        layout="ResponsiveGridLayout"
+                                        title="General Information"
+                                        labelSpanXL="3"
+                                        labelSpanL="3"
+                                        labelSpanM="3"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="4"
+                                        emptySpanL="4"
+                                        emptySpanM="4"
+                                        emptySpanS="12"
+                                        editable="true"
+                                    >
+                                        <Label
+                                            id="_IDGenLabel1"
+                                            text="Customer"
+                                        />
+                                        <Input value="" />
+                                        <Label
+                                            id="_IDGenLabel2"
+                                            text="Contract"
+                                        />
+                                        <Input value="" />
+                                        <Label
+                                            id="_IDGenLabel11"
+                                            text="Call-Off"
+                                        />
+                                        <Input value="" />
+                                        <Label
+                                            id="_IDGenLabe23l2"
+                                            text="Amount"
+                                        />
+                                        <Input value="" />
+                                        <Label
+                                            id="_IDGenLabel331"
+                                            text="Call-Off Notice Form"
+                                        />
+                                        <Input value="" />
+                                        <Label
+                                            id="_IDGenLabel222"
+                                            text="Email"
+                                        />
+                                        <Input value="" />
+                                        <Label
+                                            id="_IDGenLabel3231"
+                                            text="Status"
+                                        />
+                                        <Input value="" />
+                                    </f:SimpleForm>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+
+                            <uxap:ObjectPageSubSection
+                                id="_IDGenObjectPageSubSection21"
+                                title="History"
+                            >
+                                <uxap:blocks>
+                                    <c:Timeline
+                                        id="idTimeline"
+                                        enableDoubleSided="false"
+                                        groupBy="HireDate"
+                                        growingThreshold="0"
+                                        filterTitle="Job Title"
+                                        sortOldestFirst="true"
+                                        content="{myModel>/}"
+                                    >
+                                        <c:content>
+                                            <c:TimelineItem
+                                                id="idTemplateItem"
+                                                dateTime="{myModel>HireDate}"
+                                                title="{myModel>JobTitle}"
+                                                userNameClickable="true"
+                                                userNameClicked="onUserNameClick"
+                                                select="onPressItems"
+                                                userPicture="{myModel>Photo}"
+                                                text="{myModel>JobResponsibilities}"
+                                                userName="{myModel>Name}"
+                                                filterValue="{myModel>JobTitle}"
+                                                icon="{myModel>Icon}"
+                                            />
+                                        </c:content>
+                                    </c:Timeline>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+                </uxap:sections>
+            </uxap:ObjectPageLayout>
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button
+                    text="Confirm entire Call-off"
+                    press=""
+                />
+                <Button
+                    text="Engage Sub-contractor"
+                    press="onEngageSubContractor"
+                />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

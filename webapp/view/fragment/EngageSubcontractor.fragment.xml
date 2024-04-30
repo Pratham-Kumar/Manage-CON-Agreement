@@ -1,0 +1,155 @@
+<core:FragmentDefinition
+    xmlns:upload="sap.m.upload"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:uxap="sap.uxap"
+    xmlns:core="sap.ui.core"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:u="sap.ui.unified"
+    xmlns:f="sap.ui.layout.form"
+>
+    <Dialog
+        title="Sub Contractor Details"
+        contentWidth="100%"
+    >
+        <content>
+            <uxap:ObjectPageLayout
+                id="ObjectPageLayout32432"
+                upperCaseAnchorBar="false"
+                showAnchorBar="true"
+                enableLazyLoading="true"
+            >
+                <uxap:sections>
+                    <uxap:ObjectPageSection
+                        id="_IDGenObjectPageSection14355"
+                        showTitle="false"
+                    >
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection
+                                id="_IDGenObjectPageSubSection3241"
+                                title=""
+                            >
+                                <uxap:blocks>
+                                    <f:SimpleForm
+                                        id="supplierForm11"
+                                        layout="ResponsiveGridLayout"
+                                        title=""
+                                        labelSpanXL="5"
+                                        labelSpanL="5"
+                                        labelSpanM="5"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="3"
+                                        emptySpanL="3"
+                                        emptySpanM="3"
+                                        emptySpanS="12"
+                                        editable="true"
+                                    >
+                                        <Label
+                                            id="id1"
+                                            text="Name English"
+                                        />
+                                        <Input
+                                            id="id2"
+                                            value=""
+                                        />
+
+                                        <Label
+                                            id="id3"
+                                            text="Name Russian"
+                                        />
+                                        <Input
+                                            id="id4"
+                                            value=""
+                                        />
+
+                                        <Label
+                                            id="id5"
+                                            text="BIN (Business Identification Number)"
+                                        />
+                                        <Input
+                                            id="id6"
+                                            value=""
+                                        />
+
+                                        <Label
+                                            id="id7"
+                                            text="Comments"
+                                        />
+                                        <Input
+                                            id="id8"
+                                            value=""
+                                        />
+                                    </f:SimpleForm>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                            <uxap:ObjectPageSubSection
+                                id="_IDGenObjectPageSubSection321"
+                                title="Attachments"
+                            >
+                                <uxap:blocks>
+                                    <upload:UploadSet
+                                        id="uploadSet"
+                                        instantUpload="false"
+                                        uploadEnabled="true"
+                                        afterItemAdded="onAfterItemAdded"
+                                        uploadCompleted="onUploadCompleted"
+                                        items="{
+                        path: '/Files',
+                        parameters: {
+                            $orderby: 'createdAt desc'
+                        },
+                        templateShareable: false}"
+                                    >
+                                        <upload:items>
+                                            <upload:UploadSetItem
+                                                fileName="{fileName}"
+                                                mediaType="{mediaType}"
+                                                url="{url}"
+                                                enabledEdit="false"
+                                                visibleEdit="false"
+                                                openPressed="onOpenPressed"
+                                            >
+                                                <upload:attributes>
+                                                    <ObjectAttribute
+                                                        title="Uploaded By"
+                                                        text="{createdBy}"
+                                                        active="false"
+                                                    />
+                                                    <ObjectAttribute
+                                                        title="Uploaded on"
+                                                        text="{createdAt}"
+                                                        active="false"
+                                                    />
+                                                    <ObjectAttribute
+                                                        title="File Size"
+                                                        text="{size}"
+                                                        active="false"
+                                                    />
+                                                </upload:attributes>
+                                            </upload:UploadSetItem>
+                                        </upload:items>
+                                    </upload:UploadSet>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+                </uxap:sections>
+            </uxap:ObjectPageLayout>
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button
+                    text="Submit"
+                    press="onSubmit"
+                />
+                <Button
+                    text="Cancel"
+                    press="onCancel"
+                />
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>
