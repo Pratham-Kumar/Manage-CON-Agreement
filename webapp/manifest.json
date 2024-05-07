@@ -18,9 +18,9 @@
     "crossNavigation": {
       "inbounds": {
         "manage-manage": {
-          "semanticObject": "manage",
+          "semanticObject": "CONAgreement",
           "action": "manage",
-          "title": "{{flpTitle}}",
+          "title": "Manage CON Agreement",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"

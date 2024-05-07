@@ -5,6 +5,7 @@
     xmlns="sap.m"
     xmlns:uxap="sap.uxap"
     xmlns:core="sap.ui.core"
+    xmlns:upload="sap.m.upload"
     xmlns:semantic="sap.f.semantic"
     xmlns:u="sap.ui.unified"
     xmlns:f="sap.ui.layout.form"
@@ -51,39 +52,153 @@
                                             id="_IDGenLabel1"
                                             text="Customer"
                                         />
-                                        <Input value="" />
+                                        <Input
+                                            value="KPO"
+                                            editable="false"
+                                        />
                                         <Label
                                             id="_IDGenLabel2"
                                             text="Contract"
                                         />
-                                        <Input value="" />
+                                        <Input
+                                            value="CO89700"
+                                            editable="false"
+                                        />
                                         <Label
                                             id="_IDGenLabel11"
                                             text="Call-Off"
                                         />
-                                        <Input value="" />
+                                        <Input
+                                            value="CON31000"
+                                            editable="false"
+                                        />
                                         <Label
                                             id="_IDGenLabe23l2"
                                             text="Amount"
                                         />
-                                        <Input value="" />
+                                        <Input
+                                            value="20,000 USD"
+                                            editable="false"
+                                        />
                                         <Label
                                             id="_IDGenLabel331"
                                             text="Call-Off Notice Form"
                                         />
-                                        <Input value="" />
+                                        <Input
+                                            value="CON"
+                                            editable="false"
+                                        />
                                         <Label
                                             id="_IDGenLabel222"
                                             text="Email"
                                         />
-                                        <Input value="" />
+                                        <Input
+                                            value="test@gmail.com"
+                                            editable="false"
+                                        />
                                         <Label
                                             id="_IDGenLabel3231"
                                             text="Status"
                                         />
-                                        <Input value="" />
+                                        <Input
+                                            value="Send to Supplier"
+                                            editable="false"
+                                        />
+
+                                         <Label
+                                           
+                                            text="Call-off Notice form"
+                                        />
+                                        <Link text="Download CON to PC" href="https://ui5.sap.com/test-resources/sap/m/demokit/sample/UploadCollection/LinkedDocuments/Instructions.pdf" 	target="_blank"/>
                                     </f:SimpleForm>
                                 </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+
+                          
+
+                              <uxap:ObjectPageSubSection title="Engage Sub-contractors">
+                                <uxap:blocks>
+
+                                 <Table
+                id="subContTable"
+                items="{subContractModel>/}"
+            >
+                <headerToolbar>
+                    <OverflowToolbar >
+                        <ToolbarSpacer  />
+
+                        <Button
+                           text="Add Contractor"
+                           press="onAddContractor"
+                        />
+                         <Button
+                           text="Delete Contractor"
+                        />
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column >
+                        <Text
+                           
+                            text="Contractor Name (English)"
+                        />
+                    </Column>
+                   <Column >
+                        <Text
+                           
+                            text="Contractor Name (Russia)"
+                        />
+                    </Column>
+                  <Column >
+                        <Text
+                           
+                            text="BIN Number"
+                        />
+                    </Column>
+
+                    <Column >
+                        <Text
+                           
+                            text="Comments"
+                        />
+                    </Column>
+                    <Column >
+                    <Text
+                           
+                            text="Upload Documents"
+                        />
+                        <!--  -->
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem
+                       
+                        
+                    >
+                        <cells>
+                            <Input
+                               
+                                value="{subContractModel>nameInEnglish}"
+                            />
+                            <Input
+                              
+                                value="{subContractModel>nameInRussia}"
+                            />
+                            <Input
+                               
+                                value="{subContractModel>Bin}"
+                            />
+                             <Input
+                               
+                                value="{subContractModel>comments}"
+                            />
+                            <Button text="Upload Documents" press="onEngageSubContractor"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+                                  </uxap:blocks>
                             </uxap:ObjectPageSubSection>
 
                             <uxap:ObjectPageSubSection
@@ -92,27 +207,25 @@
                             >
                                 <uxap:blocks>
                                     <c:Timeline
+                                        sortOldestFirst="false"
                                         id="idTimeline"
+                                        groupBy="logDateTime"
                                         enableDoubleSided="false"
-                                        groupBy="HireDate"
-                                        growingThreshold="0"
-                                        filterTitle="Job Title"
-                                        sortOldestFirst="true"
-                                        content="{myModel>/}"
+                                        enableScroll="false"
+                                        height="100%"
+                                        filterTitle="Project Logs"
+                                        content="{logModel>/}"
                                     >
                                         <c:content>
                                             <c:TimelineItem
-                                                id="idTemplateItem"
-                                                dateTime="{myModel>HireDate}"
-                                                title="{myModel>JobTitle}"
+                                                dateTime="{logModel>logDateTime}"
+                                                title="{logModel>logTitle}"
                                                 userNameClickable="true"
                                                 userNameClicked="onUserNameClick"
                                                 select="onPressItems"
-                                                userPicture="{myModel>Photo}"
-                                                text="{myModel>JobResponsibilities}"
-                                                userName="{myModel>Name}"
-                                                filterValue="{myModel>JobTitle}"
-                                                icon="{myModel>Icon}"
+                                                text="{logModel>logComments}"
+                                                userName="{logModel>loggedBy}"
+                                                icon="sap-icon://employee"
                                             />
                                         </c:content>
                                     </c:Timeline>
@@ -128,11 +241,11 @@
                 <ToolbarSpacer />
                 <Button
                     text="Confirm entire Call-off"
-                    press=""
+                    press="onConfirmCallOff"
                 />
                 <Button
-                    text="Engage Sub-contractor"
-                    press="onEngageSubContractor"
+                    text="Submit Sub-contractor Details"
+                    press="onSubmitSubCon"
                 />
             </Toolbar>
         </footer>

@@ -42,7 +42,37 @@ sap.ui.define([
                 let tabelmodel = new JSONModel(data);
                 this.getView().setModel(tabelmodel, "myModel");
  
+                let logModel = new JSONModel([{
+                    "logDateTime": "2024-04-01",
+                    "logTitle": "Status Changed - Send to Supplier",
+                    "logComments": "Status Changed - Send to Supplier",
+                    "loggedBy": "LCD@kpo.kz",
 
+                }]);
+
+                this.getView().setModel(logModel, "logModel");
+
+                let subContractModel = new JSONModel([
+                    {
+                        "nameInEnglish":"",
+                        "nameInRussia":"",
+                        "Bin":"",
+                        "comments":""
+                    }
+                ]);
+
+                this.getView().setModel(subContractModel, "subContractModel");
+
+            },
+            onAddContractor:function(){
+               let aData =  this.getView().getModel("subContractModel").getData();
+               aData.push({
+                "nameInEnglish":"",
+                "nameInRussia":"",
+                "Bin":"",
+                "comments":""
+            });
+            this.getView().getModel("subContractModel").setData(aData);
             },
             onEngageSubContractor: function () {
                 if (!this.EngageSubContractor) {
@@ -62,5 +92,11 @@ sap.ui.define([
             onCancel: function () {
                 this.EngageSubContractor.close();
             },
+            onConfirmCallOff:function(){
+                sap.m.MessageBox.confirm("Are you sure about Call off Confirmation?");
+            },
+            onSubmitSubCon:function(){
+                sap.m.MessageBox.success("Sub Contractor details submitted to customer");
+            }
         });
     });

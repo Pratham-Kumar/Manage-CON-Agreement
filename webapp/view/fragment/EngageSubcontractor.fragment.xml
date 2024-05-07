@@ -10,86 +10,11 @@
     xmlns:f="sap.ui.layout.form"
 >
     <Dialog
-        title="Sub Contractor Details"
+        title="Upload Documents for Sub Contractor"
         contentWidth="100%"
     >
         <content>
-            <uxap:ObjectPageLayout
-                id="ObjectPageLayout32432"
-                upperCaseAnchorBar="false"
-                showAnchorBar="true"
-                enableLazyLoading="true"
-            >
-                <uxap:sections>
-                    <uxap:ObjectPageSection
-                        id="_IDGenObjectPageSection14355"
-                        showTitle="false"
-                    >
-                        <uxap:subSections>
-                            <uxap:ObjectPageSubSection
-                                id="_IDGenObjectPageSubSection3241"
-                                title=""
-                            >
-                                <uxap:blocks>
-                                    <f:SimpleForm
-                                        id="supplierForm11"
-                                        layout="ResponsiveGridLayout"
-                                        title=""
-                                        labelSpanXL="5"
-                                        labelSpanL="5"
-                                        labelSpanM="5"
-                                        labelSpanS="12"
-                                        adjustLabelSpan="false"
-                                        emptySpanXL="3"
-                                        emptySpanL="3"
-                                        emptySpanM="3"
-                                        emptySpanS="12"
-                                        editable="true"
-                                    >
-                                        <Label
-                                            id="id1"
-                                            text="Name English"
-                                        />
-                                        <Input
-                                            id="id2"
-                                            value=""
-                                        />
-
-                                        <Label
-                                            id="id3"
-                                            text="Name Russian"
-                                        />
-                                        <Input
-                                            id="id4"
-                                            value=""
-                                        />
-
-                                        <Label
-                                            id="id5"
-                                            text="BIN (Business Identification Number)"
-                                        />
-                                        <Input
-                                            id="id6"
-                                            value=""
-                                        />
-
-                                        <Label
-                                            id="id7"
-                                            text="Comments"
-                                        />
-                                        <Input
-                                            id="id8"
-                                            value=""
-                                        />
-                                    </f:SimpleForm>
-                                </uxap:blocks>
-                            </uxap:ObjectPageSubSection>
-                            <uxap:ObjectPageSubSection
-                                id="_IDGenObjectPageSubSection321"
-                                title="Attachments"
-                            >
-                                <uxap:blocks>
-                                    <upload:UploadSet
+              <upload:UploadSet
                                         id="uploadSet"
                                         instantUpload="false"
                                         uploadEnabled="true"
@@ -131,12 +56,6 @@
                                             </upload:UploadSetItem>
                                         </upload:items>
                                     </upload:UploadSet>
-                                </uxap:blocks>
-                            </uxap:ObjectPageSubSection>
-                        </uxap:subSections>
-                    </uxap:ObjectPageSection>
-                </uxap:sections>
-            </uxap:ObjectPageLayout>
         </content>
         <footer>
             <Toolbar>
